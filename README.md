@@ -1,5 +1,52 @@
 # JEV ARENA — Robot Boxing Championship
 
+> **A use case for the Jev decision model.** Can a decision model run a boxer in real time, under strict rules, and how does it compare with GPT and Claude when everything else is identical? A Marc-Yvan project.
+
+[![JEV ARENA trailer: two AI brains, one ring](docs/jev-arena-demo.gif)](https://github.com/Marcyvan1777/jev-arena/releases/download/v1.0.0/jev-arena-trailer.mp4)
+
+**[Watch the 1-minute trailer](https://github.com/Marcyvan1777/jev-arena/releases/download/v1.0.0/jev-arena-trailer.mp4)** · **[Watch the 3-minute walkthrough](https://github.com/Marcyvan1777/jev-arena/releases/download/v1.0.0/jev-arena-walkthrough.mp4)** (both recorded from real, paid fights, with no scripted outcome).
+
+## What this shows
+
+![Both decisions side by side: Jev returns a probability for every legal action, Claude returns one choice](docs/decision-panel.png)
+
+Each exchange, the server sends the **same state snapshot and the same list of legal actions** to both boxers' brains, which answer **at the same time** without seeing each other's move. A rules engine then resolves the exchange with dice that depend only on the seed, never on the corner. The model never controls damage, hits or knockouts: it only chooses a move.
+
+![A knockout, with both decision cards under it](docs/knockout.png)
+
+### Models used
+
+| Boxer | Exact model | How it is called | What it returns |
+|---|---|---|---|
+| **Jev** | `jev-1.14.0` (asked as `jev-latest`) | TypeSafe SDK, `systemOne` with a `choice` question | one choice **and** a probability for every legal action |
+| **GPT** | `gpt-4o-mini-2024-07-18` (asked as `gpt-4o-mini`) | OpenAI Responses API, strict JSON schema | one legal action |
+| **Claude** | `claude-haiku-5-5` | Anthropic Messages API, forced strict tool call | one legal action |
+
+GPT and Claude are the **small, fast tiers** (4o-mini, Haiku). The results below say nothing about their largest models. Change `OPENAI_MODEL` and `CLAUDE_MODEL` in `.env` to test others. The model names above are the identifiers the APIs returned during the recorded fights (October 2026); the `jev-latest` alias can point to another version later.
+
+A **personality** (BERSERKER, COUNTERPUNCHER, TACTICIAN, TRICKSTER, COWARD) is **one sentence in the prompt**. The rules engine never reads it and every boxer starts with identical stats, so the only differences are the model and that sentence.
+
+### Pilot results: every model against every other
+
+![The lab: leaderboard, model effect, personality effect and head-to-head matrix](docs/lab-results.png)
+
+56 real bouts, 8 contenders (4 models × 2 personalities), both corners, shared seeds, **1,680 paid API calls**, 0 illegal moves.
+
+| Contender | W-D-L | Score | 95% interval |
+|---|---|---|---|
+| JEV (BERSERKER) | 12-0-2 | 86% | 60–96% |
+| CLAUDE (COUNTERPUNCHER) | 9-0-5 | 64% | 39–84% |
+| GPT (COUNTERPUNCHER) | 8-0-6 | 57% | 33–79% |
+| CLAUDE (BERSERKER), GPT (BERSERKER), DEMO (COUNTERPUNCHER) | 7-0-7 | 50% | 27–73% |
+| JEV (COUNTERPUNCHER) | 5-0-9 | 36% | 16–61% |
+| DEMO (BERSERKER) | 1-0-13 | 7% | 1–32% |
+
+With the same personality, the model effect is Jev 67%, GPT 58%, Claude 58%, rule-based bot 17%. Jev won 5 of 8 bouts against each of GPT, Claude and the bot. Jev (BERSERKER) was the best record and Jev (COUNTERPUNCHER) one of the weakest, so **the model and its personality interact**.
+
+**Honest limits.** There are only 2 bouts per pairing and most 95% intervals overlap: this is a pilot that demonstrates the method, not a ranking. Language models are sampled with default settings, so the seed fixes the dice but not the models' choices; the tournament therefore plays several bouts per pairing and swaps corners. An earlier run was discarded because Claude's tool schema was not strict and it made illegal moves; the adapter was fixed and the whole grid replayed.
+
+---
+
 JEV ARENA is a local AI-vs-AI robot boxing game. Each boxer is named after its model with its personality in parentheses, for example `JEV (BERSERKER)` or `CLAUDE (COUNTERPUNCHER)`. Two autonomous humanoid robots box in a 3D championship ring: they jab, cross, hook and uppercut, guard, slip, counter, circle and fall. The server is authoritative; React Three Fiber renders the fight; React exposes live decisions and match telemetry. Each robot's tactics come from an AI provider (Jev, OpenAI or Claude) or from an explicitly labelled local Demo bot.
 
 ## Windows quick start

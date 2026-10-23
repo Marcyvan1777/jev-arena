@@ -1,0 +1,21 @@
+node_modules/
+.npm-cache/
+dist/
+.env
+.env.*
+!.env.example
+coverage/
+*.log
+test-results/
+playwright-report/
+.agents/
+.codex/
+skills-lock.json
+results/
+
+# large or third-party media kept out of the repository
+showcase/*.mp4
+client/public/arena/*.jpg
+client/public/arena/*.jpeg
+client/public/arena/*.png
+client/public/arena/*.webp

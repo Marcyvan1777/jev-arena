@@ -1,0 +1,15 @@
+.fairness-panel{margin-top:14px}
+.fairness-panel.broken{border-color:#a24b3a}
+.fairness-type{letter-spacing:1px}
+.fairness-type.model-only,.fairness-type.personality-only{color:#c5ff69}
+.fairness-type.model-and-personality{color:#ffb159}
+.fairness-body{padding:12px 15px 14px}
+.fairness-note{font-size:10px;line-height:1.6;color:#9fb0c3;margin-bottom:10px}
+.fairness-body ul{list-style:none;margin:0 0 12px;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:6px 14px}
+.fairness-body li{display:grid;grid-template-columns:14px 1fr;gap:1px 6px;font:9px Consolas,monospace;color:#b8c7d8}
+.fairness-body li b{color:#c5ff69;grid-row:1}.fairness-body li.fail b{color:#ff7a6a}
+.fairness-body li small{grid-column:2;font-size:8px;line-height:1.5;color:#6f8399}
+.fairness-actions{display:flex;gap:8px;flex-wrap:wrap}.fairness-actions button{font-size:8px;letter-spacing:.6px;padding:0 12px}
+.fairness-warning{margin-top:10px;font-size:9px;line-height:1.6;color:#ffb159}
+@media(max-width:780px){.fairness-body ul{grid-template-columns:1fr}}
+.seed-random{margin-left:8px;background:transparent;border:1px solid #334151;border-radius:3px;color:#9fb2c6;font:7px Consolas,monospace;letter-spacing:.6px;padding:2px 5px}

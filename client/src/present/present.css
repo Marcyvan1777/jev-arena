@@ -1,0 +1,45 @@
+body.present-mode{overflow:hidden}
+.present{position:fixed;inset:0;background:#02030a;overflow:hidden}
+.present .arena-canvas{position:fixed;inset:0;width:100vw;height:100vh;aspect-ratio:auto;z-index:0}
+.present .camera-switch,.present .spectate-bar{display:none}
+.present .hud-top{padding-top:10px}
+.pv-strip{position:fixed;left:0;right:0;bottom:0;z-index:5;display:grid;grid-template-columns:1fr minmax(240px,.62fr) 1fr;gap:14px;padding:14px 18px 16px;background:linear-gradient(0deg,#02040af2 55%,#02040a00);font-family:Bahnschrift,"Segoe UI",sans-serif}
+.pv-card{border:1px solid #ffffff1c;border-top:3px solid var(--c);background:#0a0f18e0;border-radius:6px;padding:10px 14px 8px;display:flex;flex-direction:column;gap:6px;min-width:0;--c:var(--red)}
+.pv-card.blue{--c:var(--blue)}
+.pv-card header{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.pv-card header b{font-size:clamp(13px,1.15vw,19px);letter-spacing:1px;color:var(--c);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pv-badge{font:700 clamp(8px,.6vw,10px) Consolas,monospace;letter-spacing:1.2px;background:var(--c);color:#06080d;padding:3px 7px;border-radius:2px;white-space:nowrap}
+.pv-action{font-size:clamp(24px,2.3vw,40px);font-weight:900;letter-spacing:1px;color:#f3f8ff;min-height:1.25em;display:flex;align-items:baseline;gap:12px}
+.pv-action em{font:700 clamp(13px,1.2vw,20px) Consolas,monospace;font-style:normal;color:var(--c)}
+.pv-wait{font:700 14px Consolas,monospace;color:#6f8399;letter-spacing:2px}
+.pv-thinking{font:800 clamp(16px,1.5vw,24px) Consolas,monospace;color:#ffd24a;letter-spacing:2px;animation:pv-blink 1s ease-in-out infinite}
+@keyframes pv-blink{50%{opacity:.45}}
+.pv-illegal{font:800 12px Consolas,monospace;color:#ffb159;letter-spacing:.8px}
+.pv-bars{display:grid;gap:4px}
+.pv-bars div{display:grid;grid-template-columns:clamp(70px,6.5vw,110px) 1fr 40px;gap:8px;align-items:center;font:clamp(9px,.72vw,12px) Consolas,monospace;color:#8ea2b8}
+.pv-bars i{height:7px;background:#1b2531;border-radius:3px;overflow:hidden}.pv-bars u{display:block;height:100%;background:#566f87}
+.pv-bars .on{color:#fff}.pv-bars .on u{background:var(--c);box-shadow:0 0 10px var(--c)}.pv-bars b{font-weight:400;text-align:right}
+.pv-note{font:clamp(9px,.72vw,12px) Consolas,monospace;color:#7f93a8;line-height:1.5}
+.pv-card footer{font:clamp(8px,.66vw,11px) Consolas,monospace;color:#6f8399;letter-spacing:.6px;margin-top:auto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pv-history{display:flex;gap:4px;flex-wrap:nowrap;overflow:hidden}
+.pv-history span{font:clamp(7px,.58vw,10px) Consolas,monospace;color:#5f7388;background:#121a25;padding:2px 5px;border-radius:2px;white-space:nowrap}.pv-history .last{color:#c5ff69;background:#1c2a17}
+.pv-centre{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:10px;padding:0 6px}
+.pv-flow{display:flex;flex-direction:column;gap:3px;align-items:center;font:700 clamp(8px,.68vw,11px) Consolas,monospace;letter-spacing:1px;color:#8aa0b6}
+.pv-flow b{border:1px solid #2a3748;background:#0a111b;padding:4px 8px;border-radius:3px;font-weight:700}.pv-flow b.hot{border-color:#c5ff69;color:#c5ff69;box-shadow:0 0 14px #c5ff6933}.pv-flow i{font-style:normal;color:#4a5c70;transform:rotate(90deg)}
+.pv-centre p{font-size:clamp(10px,.82vw,14px);line-height:1.5;color:#b2c2d3;margin:0}.pv-centre small{font:clamp(8px,.62vw,10px) Consolas,monospace;letter-spacing:2px;color:#c5ff69}
+/* titles and subtitles */
+.vo{position:fixed;inset:0;pointer-events:none;z-index:50;font-family:Bahnschrift,"Segoe UI",sans-serif}
+.vo-chapter{position:absolute;left:28px;top:clamp(180px,22vh,230px);font:800 clamp(10px,.85vw,14px) Consolas,monospace;letter-spacing:4px;color:#c5ff69;background:#06100acc;border-left:3px solid #c5ff69;padding:6px 12px;animation:vo-in .5s both}
+.vo-caption{position:absolute;left:0;right:0;bottom:clamp(250px,26vh,310px);display:flex;justify-content:center;padding:0 6vw;animation:vo-in .45s both}
+.vo-caption span{font-size:clamp(18px,1.9vw,32px);font-weight:700;line-height:1.35;text-align:center;color:#fff;background:#04070dd9;border:1px solid #ffffff22;border-bottom:3px solid #c5ff69;padding:10px 24px;border-radius:4px;max-width:1500px;text-shadow:0 2px 8px #000}
+body:not(.present-mode) .vo-caption{bottom:46px}
+.vo-card{position:absolute;inset:0;display:grid;place-items:center;background:radial-gradient(ellipse at 50% 40%,#101a2a,#02030a 75%);animation:vo-fade .6s both;--t:#c5ff69}
+.vo-card.red{--t:#ff5a72}.vo-card.blue{--t:#4aaeff}.vo-card.gold{--t:#ffd24a}
+.vo-card-inner{max-width:min(1500px,86vw);padding:0 4vw}
+.vo-kicker{font:800 clamp(12px,1.1vw,19px) Consolas,monospace;letter-spacing:8px;color:var(--t);margin-bottom:18px;animation:vo-in .6s .1s both}
+.vo-card h1{margin:0 0 28px;font-size:clamp(38px,5.2vw,92px);font-weight:900;line-height:1.05;letter-spacing:-1px;color:#fff;animation:vo-in .7s .2s both}
+.vo-card p{margin:0 0 16px;font-size:clamp(18px,1.9vw,34px);line-height:1.45;color:#cdd9e6;border-left:4px solid var(--t);padding-left:20px;animation:vo-in .6s both}
+.vo-foot{margin-top:30px;font:700 clamp(10px,.9vw,15px) Consolas,monospace;letter-spacing:3px;color:#7f93a8;animation:vo-in .6s 2s both}
+@keyframes vo-in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes vo-fade{from{opacity:0}to{opacity:1}}
+body:not(.present-mode) .vo-chapter{top:18px;left:auto;right:24px}

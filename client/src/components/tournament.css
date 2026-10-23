@@ -1,0 +1,8 @@
+.tournament-results .contender{grid-column:1/-1;display:grid;grid-template-columns:1fr auto;gap:2px 10px;align-items:baseline;border-left:3px solid var(--red)}
+.tournament-results .contender.blue{border-left-color:var(--blue)}
+.tournament-results .contender span{font:8px Consolas,monospace;letter-spacing:.8px;color:#aebdcb;overflow-wrap:anywhere}
+.tournament-results .contender b small{font:8px Consolas,monospace;color:#8498ad}
+.tournament-results .contender em{grid-column:1/-1;font:8px Consolas,monospace;color:#8fa3b8;font-style:normal;cursor:help}
+.tournament-caution{color:#e9ac66!important}
+.tournament-progress{margin:8px 0 0;font:8px Consolas,monospace;letter-spacing:.8px;color:#c5ff69}
+.victory-dialog a{color:#c5ff69;text-decoration:underline}

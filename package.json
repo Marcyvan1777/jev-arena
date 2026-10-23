@@ -1,0 +1,50 @@
+{
+  "name": "jev-arena",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "scripts": {
+    "dev": "concurrently -k -n SERVER,ARENA \"tsx watch server/src/index.ts\" \"vite --host 127.0.0.1\"",
+    "build": "tsc --noEmit && vite build && tsc -p tsconfig.server.json",
+    "start": "node dist/server/server/src/index.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:offline": "node --experimental-strip-types --import ./scripts/register-ts.mjs --test tests/native-engine.test.mjs",
+    "benchmark:boxing": "node --experimental-strip-types --import ./scripts/register-ts.mjs scripts/boxing-benchmark.mjs",
+    "balance:policies": "node --experimental-strip-types --import ./scripts/register-ts.mjs scripts/policy-check.mjs",
+    "balance:matrix": "node --experimental-strip-types --import ./scripts/register-ts.mjs scripts/balance-matrix.mjs",
+    "smoke:live": "tsx scripts/smoke-live.ts",
+    "check": "npm test && npm run build"
+  },
+  "dependencies": {
+    "@react-three/drei": "^10.0.4",
+    "@react-three/fiber": "^9.0.4",
+    "@react-three/postprocessing": "^3.0.4",
+    "@typesafe-ai/sdk": "0.7.0",
+    "dotenv": "^16.4.7",
+    "express": "^5.1.0",
+    "postprocessing": "^6.37.1",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "three": "^0.170.0",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.0",
+    "@types/express": "^5.0.1",
+    "@types/node": "^22.14.0",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "@types/three": "^0.170.0",
+    "@vitejs/plugin-react": "^4.4.0",
+    "concurrently": "^9.1.2",
+    "tailwindcss": "^4.1.0",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.0",
+    "vitest": "^3.1.0"
+  }
+}

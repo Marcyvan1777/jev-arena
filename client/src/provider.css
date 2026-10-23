@@ -1,0 +1,25 @@
+.paid-confirm {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  margin-top: 9px;
+  color: #ffcf85;
+  font: 8px Consolas, monospace;
+  line-height: 1.4;
+}
+.paid-confirm input { width: auto; accent-color: #ffbf5f; }
+.provider-readiness {
+  margin: 0 0 12px;
+  padding: 8px 11px;
+  border: 1px solid #2b3746;
+  background: #0b111a;
+  color: #aebdcb;
+  font: 8px Consolas, monospace;
+  letter-spacing: .5px;
+}
+.tournament-progress {
+  margin: 10px 0 0;
+  color: #7fe7cb;
+  font: 8px Consolas, monospace;
+  letter-spacing: .55px;
+}
